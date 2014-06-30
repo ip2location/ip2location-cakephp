@@ -18,9 +18,10 @@ INSTALLATION
 4. Unzip and copy the BIN file into app/Plugin/IP2Location/data folder. 
 5. Rename the BIN file to IP2LOCATION.BIN.
 
-Note: The plugin has included an old BIN database for your testing and development. 
+Note: The plugin has included an old BIN database for your testing and development purpose. 
 You may want to download a latest copy of BIN database as the URL stated above.
-
+The BIN database refers to the binary file ended with .BIN extension, but not the CSV format.
+Please select the right package for download.
 
 USAGE
 ---------------
