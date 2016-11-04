@@ -32,7 +32,7 @@ class Database {
    *
    * @var string
    */
-  const VERSION = '7.2.4';
+  const VERSION = '8.0.2';
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //  Error field constants  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -609,7 +609,14 @@ class Database {
    * @var array
    */
   private $ipBase = [];
-
+  
+  
+  //hjlim
+  private $indexBaseAddr = [];
+  private $year;
+  private $month;
+  private $day;
+  
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //  Default fields  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -735,15 +742,17 @@ class Database {
     $this->offset[4]      = -4;
     $this->offset[6]      = 8;
     //
-    $year                 = 2000 + $this->readByte(3);
-    $month                = $this->readByte(4);
-    $day                  = $this->readByte(5);
-    $this->date           = date('Y-m-d', strtotime("{$year}-{$month}-{$day}"));
+    $this->year                 = 2000 + $this->readByte(3);
+    $this->month                = $this->readByte(4);
+    $this->day                  = $this->readByte(5);
+    $this->date           = date('Y-m-d', strtotime("{$this->year}-{$this->month}-{$this->day}"));
     //
     $this->ipCount[4]     = $this->readWord(6);
-    $this->ipBase[4]      = $this->readByte(10);
+    $this->ipBase[4]      = $this->readWord(10);		//hjlim readword
     $this->ipCount[6]     = $this->readWord(14);
     $this->ipBase[6]      = $this->readWord(18);
+	$this->indexBaseAddr[4] = $this->readWord(22);		//hjlim
+	$this->indexBaseAddr[6] = $this->readWord(26);		//hjlim
   }
 
   /**
@@ -1473,18 +1482,43 @@ class Database {
     $high   = $this->ipCount[$version];
     $low    = 0;
 
-    // as long as we can narrow down the search...
-    while ($low <= $high) {
-      $mid     = (int) ($low + (($high - $low) / 2));
+	//hjlim
+	$indexBaseStart = $this->indexBaseAddr[$version];
+	if ($indexBaseStart > 0){
+		$indexPos = 0;
+		switch($version){
+			case 4:
+				$ipNum1_2 = intval($ipNumber / 65536);
+				$indexPos = $indexBaseStart + ($ipNum1_2 << 3);
+				
+				break;
+			
+			case 6:
+				$ipNum1 = intval(bcdiv($ipNumber, bcpow('2', '112')));
+				$indexPos = $indexBaseStart + ($ipNum1 << 3);
 
+				break;
+				
+			default:
+				return false;
+		}
+		
+		$low = $this->readWord($indexPos);
+		$high = $this->readWord($indexPos + 4);
+	}
+	
+    // as long as we can narrow down the search...
+	while ($low <= $high) {
+      $mid     = (int) ($low + (($high - $low) >> 1));
+		
 	  // Read IP ranges to get boundaries
       $ip_from = $this->readIp($version, $base + $width * $mid);
       $ip_to   = $this->readIp($version, $base + $width * ($mid + 1));
-
+    
       // determine whether to return, repeat on the lower half, or repeat on the upper half
       switch (self::ipBetween($version, $ipNumber, $ip_from, $ip_to)) {
         case 0:
-          return $base + $offset + $mid * $width;
+		  return $base + $offset + $mid * $width;
         case -1:
           $high = $mid - 1;
           break;
@@ -1544,6 +1578,20 @@ class Database {
     }
   }
 
+  /**
+   * Return the version of module
+   */
+  public function getModuleVersion() {
+	return self::VERSION;
+  }
+  
+  /**
+   * Return the version of module
+   */
+  public function getDatabaseVersion() {
+	return $this->year . '.' . $this->month . '.' . $this->day;
+  }
+  
   /**
    * This function will look the given IP address up in the database and return the result(s) asked for
    *

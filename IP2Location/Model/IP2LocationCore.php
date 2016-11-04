@@ -57,10 +57,10 @@ class IP2LocationCore extends AppModel
      */
     public function get($ip, $query = array())
     {
-		$obj = new IP2Location(dirname(dirname(__FILE__)) . DS . 'data' . DS . 'IP2LOCATION.BIN', IP2Location::FILE_IO);
+		$obj = new \IP2Location\Database(dirname(dirname(__FILE__)) . DS . 'data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
 
         try {
-			$records = $obj->lookup($ip, IP2Location::ALL);
+			$records = $obj->lookup($ip, \IP2Location\Database::ALL);
         } catch (Exception $e) {
             return null;
         }
