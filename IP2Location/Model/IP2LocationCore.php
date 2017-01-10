@@ -12,23 +12,24 @@
  * http://www.opensource.org/licenses/mit-license.php.
  *
  * @author     IP2Location <support@ip2location.com>
- * @copyright  Copyright 2014, IP2Location.com (http://www.ip2location.com)
+ * @copyright  Copyright 2017, IP2Location.com (http://www.ip2location.com)
  * @license    MIT License (http://www.opensource.org/licenses/mit-license.php)
- * @version    1.0
+ * @version    1.1.0
  * @since      File available since Release 2.0
  */
 
-App::uses('AppModel', 'Model');
-
-/**
- * Include PEAR Net_GeoIP class
- */
-App::import('IP2Location.Lib', 'IP2Location');
+if(Configure::version() < '3') {
+    // App::uses('AppModel', 'Model');
+    App::import('IP2Location.Lib', 'IP2Location');
+}
+else {
+    require_once(ROOT . DS . 'plugins' . DS . 'IP2Location' . DS . 'Lib' . DS . 'IP2Location.php');
+}
 
 /**
  * GeoIP Location class
  */
-class IP2LocationCore extends AppModel
+class IP2LocationCore
 {
     /**
      * Container for data returned by the find method
@@ -57,10 +58,10 @@ class IP2LocationCore extends AppModel
      */
     public function get($ip, $query = array())
     {
-		$obj = new \IP2Location\Database(dirname(dirname(__FILE__)) . DS . 'data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
+        $obj = new \IP2Location\Database(dirname(dirname(__FILE__)) . DS . 'data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
 
         try {
-			$records = $obj->lookup($ip, \IP2Location\Database::ALL);
+            $records = $obj->lookup($ip, \IP2Location\Database::ALL);
         } catch (Exception $e) {
             return null;
         }
