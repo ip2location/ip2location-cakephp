@@ -9,7 +9,7 @@
             "name": "IP2Location",
             "email": "support@ip2location.com"
         }
-    ]
+    ],
     "require": {
         "php": ">=5.4.0",
         "cakephp/cakephp": ">=3.0",
