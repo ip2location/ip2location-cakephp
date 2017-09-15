@@ -9,7 +9,7 @@ For CakePHP 3.x
 2. Download latest IP2Location BIN database
     - IP2Location free LITE database at http://lite.ip2location.com
     - IP2Location commercial database at http://www.ip2location.com
-3. Unzip and copy the BIN file into *cakephp/vendor/ip2location/ip2location-cakephp/src/Data* folder. 
+3. Unzip and copy the BIN file into */vendor/ip2location/ip2location-cakephp/src/Data* folder. 
 4. Rename the BIN file to IP2LOCATION.BIN.
 
 **Note:** The plugin has included an old BIN database for your testing and development purpose. 
@@ -25,9 +25,12 @@ In this tutorial, we will show you on how to create a **TestsController** to dis
 ```
 php bin/cake bake controller Tests
 ```
-2. Create an empty **index.ctp** file in *cakephp/src/Template/Tests* folder.
-3. Open the **cakephp/src/Controller/TestsController.php** in any text editor.
-4. Remove the contents in TestsController.php and add the below lines into the controller file.
+2. Create a **Tests** folder in */src/Tempalte* if not exists.
+3. Create an empty **index.ctp** file in */src/Template/Tests* folder.
+4. Open the **cakephp/src/Controller/TestsController.php** in any text editor.
+5. Remove the contents in TestsController.php and add the below lines into the controller file.
+
+Note: You just need to load the IP2Location library with **use IP2LocationCakePHP\Controller\IP2LocationCoresController** to use the functions.
 ```
 <?php
 namespace App\Controller;
