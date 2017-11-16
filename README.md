@@ -1,4 +1,7 @@
 # IP2Location CakePHP Plugin
+[![Latest Stable Version](https://img.shields.io/packagist/v/ip2location/ip2location-cakephp.svg)](https://packagist.org/packages/ip2location/ip2location-cakephp)
+[![Total Downloads](https://img.shields.io/packagist/dt/ip2location/ip2location-cakephp.svg?style=flat-square)](https://packagist.org/packages/ip2location/ip2location-cakephp)
+
 IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage type that any IP address or hostname originates from. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases for applications written using CakePHP.
 
 
