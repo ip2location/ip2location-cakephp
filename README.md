@@ -86,11 +86,17 @@ class TestsController extends AppController
 5. Enter the URL <your domain>/Tests and run. You should see the information of **8.8.8.8** IP address.
 
 
+## IPv4 BIN vs IPv6 BIN
+Use the IPv4 BIN file if you just need to query IPv4 addresses.
+If you query an IPv6 address using the IPv4 BIN, you'll see the IPV6_NOT_SUPPORTED error.
+
+Use the IPv6 BIN file if you need to query BOTH IPv4 and IPv6 addresses.
 
 ## DEPENDENCIES (IP2LOCATION BIN DATA FILE)
 This library requires IP2Location BIN data file to function. You may download the BIN data file at
 * IP2Location LITE BIN Data (Free): http://lite.ip2location.com
 * IP2Location Commercial BIN Data (Comprehensive): http://www.ip2location.com
+
 
 ## SUPPORT
 Email: support@ip2location.com
