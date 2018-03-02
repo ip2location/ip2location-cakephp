@@ -10,8 +10,8 @@ For CakePHP 3.x
 
 1. Run the command: `composer require ip2location/ip2location-cakephp` to download the plugin into the CakePHP 3 platform.
 2. Download latest IP2Location BIN database
-    - IP2Location free LITE database at http://lite.ip2location.com
-    - IP2Location commercial database at http://www.ip2location.com
+    - IP2Location free LITE database at https://lite.ip2location.com
+    - IP2Location commercial database at https://www.ip2location.com
 3. Unzip and copy the BIN file into */vendor/ip2location/ip2location-cakephp/src/Data* folder. 
 4. Rename the BIN file to IP2LOCATION.BIN.
 
@@ -93,11 +93,11 @@ Use the IPv6 BIN file if you need to query BOTH IPv4 and IPv6 addresses.
 
 ## DEPENDENCIES (IP2LOCATION BIN DATA FILE)
 This library requires IP2Location BIN data file to function. You may download the BIN data file at
-* IP2Location LITE BIN Data (Free): http://lite.ip2location.com
-* IP2Location Commercial BIN Data (Comprehensive): http://www.ip2location.com
+* IP2Location LITE BIN Data (Free): https://lite.ip2location.com
+* IP2Location Commercial BIN Data (Comprehensive): https://www.ip2location.com
 
 
 ## SUPPORT
 Email: support@ip2location.com
 
-Website: http://www.ip2location.com
+Website: https://www.ip2location.com
