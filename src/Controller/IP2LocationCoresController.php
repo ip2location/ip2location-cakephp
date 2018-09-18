@@ -19,7 +19,7 @@ class IP2LocationCoresController
 
     public function get($ip, $query = array())
     {
-        $obj = new \IP2Location\Database(ROOT . DS . 'vendor' . DS . 'ip2location' . DS . 'ip2location-cakephp' . DS . 'src' . DS . 'data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
+        $obj = new \IP2Location\Database(ROOT . DS . 'vendor' . DS . 'ip2location' . DS . 'ip2location-cakephp' . DS . 'src' . DS . 'Data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
 
 
         try {
