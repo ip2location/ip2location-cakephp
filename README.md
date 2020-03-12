@@ -6,9 +6,9 @@ IP2Location CakePHP plugin enables the user to find the country, region, city, c
 
 
 ## INSTALLATION
-For CakePHP 3.x
+For CakePHP 4.x
 
-1. Run the command: `composer require ip2location/ip2location-cakephp` to download the plugin into the CakePHP 3 platform.
+1. Run the command: `composer require ip2location/ip2location-cakephp` to download the plugin into the CakePHP 4 platform.
 2. Download latest IP2Location BIN database
     - IP2Location free LITE database at https://lite.ip2location.com
     - IP2Location commercial database at https://www.ip2location.com
@@ -24,12 +24,12 @@ Please select the right package for download.
 ## USAGE
 In this tutorial, we will show you on how to create a **TestsController** to display the IP information.
 
-1. Create a **TestsController** in CakePHP 3 using the below command line
+1. Create a **TestsController** in CakePHP 4 using the below command line
 ```
 php bin/cake bake controller Tests
 ```
-2. Create a **Tests** folder in */src/Tempalte* if not exists.
-3. Create an empty **index.ctp** file in */src/Template/Tests* folder.
+2. Create a **Tests** folder in */cakephp/templates* if not exists.
+3. Create an empty **index.php** file in */cakephp/templates/Tests* folder.
 4. Open the **cakephp/src/Controller/TestsController.php** in any text editor.
 5. Remove the contents in TestsController.php and add the below lines into the controller file.
 
