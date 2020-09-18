@@ -2,7 +2,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/ip2location/ip2location-cakephp.svg)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 [![Total Downloads](https://img.shields.io/packagist/dt/ip2location/ip2location-cakephp.svg?style=flat-square)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 
-IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage type that any IP address or hostname originates from. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases for applications written using CakePHP.
+IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage type that any IP address or hostname originates from. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases or web service for applications written using CakePHP.
 
 
 ## INSTALLATION
@@ -41,6 +41,21 @@ namespace App\Controller;
 use App\Controller\AppController;
 use IP2LocationCakePHP\Controller\IP2LocationCoresController;
 
+// (required) Define IP2Location API key.
+define('IP2LOCATION_API_KEY', 'your_api_key');
+
+// (required) Define IP2Location Web service package of different granularity of return information.
+define('IP2LOCATION_PACKAGE', 'WS1');
+
+// (optional) Define to use https or http.
+define('IP2LOCATION_USESSL', false);
+
+// (optional) Define extra information in addition to the above-selected package. Refer to https://www.ip2location.com/web-service/ip2location for the list of available addons.
+define('IP2LOCATION_ADDONS', []);
+
+// (optional) Define Translation information. Refer to https://www.ip2location.com/web-service/ip2location for available languages.
+define('IP2LOCATION_LANGUAGE', 'en');
+
 /**
  * Tests Controller
  */
@@ -55,8 +70,9 @@ class TestsController extends AppController
     public function index()
     {
         $IP2Location = new IP2LocationCoresController();
-        $record = $IP2Location->get('8.8.8.8');
 
+        $record = $IP2Location->get('8.8.8.8');
+        echo 'Result from BIN Database:<br>';
         echo 'IP Address: ' . $record['ipAddress'] . '<br>';
         echo 'IP Number: ' . $record['ipNumber'] . '<br>';
         echo 'ISO Country Code: ' . $record['countryCode'] . '<br>';
@@ -79,6 +95,12 @@ class TestsController extends AppController
         echo 'Mobile Carrier Name: ' . $record['mobileCarrierName'] . '<br>';
         echo 'Elevation: ' . $record['elevation'] . '<br>';
         echo 'Usage Type: ' . $record['usageType'] . '<br>';
+
+        $record = $IP2Location->getWebService('8.8.8.8');
+        echo 'Result from Web service:<br>';
+        echo '<pre>';
+        print_r ($record);
+        echo '</pre>';
     }
 
 }
@@ -86,15 +108,18 @@ class TestsController extends AppController
 5. Enter the URL <your domain>/Tests and run. You should see the information of **8.8.8.8** IP address.
 
 
+## DEPENDENCIES
+This library requires IP2Location BIN data file or IP2Location API key to function. You may download the BIN data file at
+* IP2Location LITE BIN Data (Free): https://lite.ip2location.com
+* IP2Location Commercial BIN Data (Comprehensive): https://www.ip2location.com
+
+You can also sign up for [IP2Location Web Service](https://www.ip2location.com/web-service/ip2location) to get one free API key.
+
+
 ## IPv4 BIN vs IPv6 BIN
 Use the IPv4 BIN file if you just need to query IPv4 addresses.
 
 Use the IPv6 BIN file if you need to query BOTH IPv4 and IPv6 addresses.
-
-## DEPENDENCIES (IP2LOCATION BIN DATA FILE)
-This library requires IP2Location BIN data file to function. You may download the BIN data file at
-* IP2Location LITE BIN Data (Free): https://lite.ip2location.com
-* IP2Location Commercial BIN Data (Comprehensive): https://www.ip2location.com
 
 
 ## SUPPORT
