@@ -15,9 +15,17 @@
         "cakephp/cakephp": ">=3.0",
         "ip2location/ip2location-php": "8.*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
     "autoload": {
         "psr-4": {
             "IP2LocationCakePHP\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IP2LocationCakePHP\\Test\\": "tests"
         }
     }
 }

@@ -3,23 +3,23 @@ namespace IP2LocationCakePHP\Controller;
 
 // Web Service Settings
 if(!defined('IP2LOCATION_API_KEY')) {
-	define('IP2LOCATION_API_KEY', 'demo');
+    define('IP2LOCATION_API_KEY', 'demo');
 }
 
 if(!defined('IP2LOCATION_PACKAGE')) {
-	define('IP2LOCATION_PACKAGE', 'WS1');
+    define('IP2LOCATION_PACKAGE', 'WS1');
 }
 
 if(!defined('IP2LOCATION_USESSL')) {
-	define('IP2LOCATION_USESSL', false);
+    define('IP2LOCATION_USESSL', false);
 }
 
 if(!defined('IP2LOCATION_ADDONS')) {
-	define('IP2LOCATION_ADDONS', []);
+    define('IP2LOCATION_ADDONS', []);
 }
 
 if(!defined('IP2LOCATION_LANGUAGE')) {
-	define('IP2LOCATION_LANGUAGE', 'en');
+    define('IP2LOCATION_LANGUAGE', 'en');
 }
 
 /**
@@ -38,9 +38,13 @@ class IP2LocationCoresController
         //
     }
 
-    public function get($ip, $query = array())
+    public function get($ip, $db = '')
     {
-        $obj = new \IP2Location\Database(ROOT . DS . 'vendor' . DS . 'ip2location' . DS . 'ip2location-cakephp' . DS . 'src' . DS . 'Data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
+        if($db == '') {
+            $obj = new \IP2Location\Database(ROOT . DS . 'vendor' . DS . 'ip2location' . DS . 'ip2location-cakephp' . DS . 'src' . DS . 'Data' . DS . 'IP2LOCATION.BIN', \IP2Location\Database::FILE_IO);
+        } else {
+            $obj = $db;
+        }
 
         try {
             $records = $obj->lookup($ip, \IP2Location\Database::ALL);
