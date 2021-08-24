@@ -2,7 +2,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/ip2location/ip2location-cakephp.svg)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 [![Total Downloads](https://img.shields.io/packagist/dt/ip2location/ip2location-cakephp.svg?style=flat-square)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 
-IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage type that any IP address or hostname originates from. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases or web service for applications written using CakePHP.
+IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage typ, IP address type and IAB advertising category from IP address using IP2Location database. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases or web service for applications written using CakePHP.
 
 
 ## INSTALLATION
@@ -95,6 +95,8 @@ class TestsController extends AppController
         echo 'Mobile Carrier Name: ' . $record['mobileCarrierName'] . '<br>';
         echo 'Elevation: ' . $record['elevation'] . '<br>';
         echo 'Usage Type: ' . $record['usageType'] . '<br>';
+        echo 'Address Type: ' . $record['addressType'] . '<br>';
+        echo 'Category: ' . $record['category'] . '<br>';
 
         $record = $IP2Location->getWebService('8.8.8.8');
         echo 'Result from Web service:<br>';
