@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.4.0",
         "cakephp/cakephp": ">=3.0",
-        "ip2location/ip2location-php": "8.*"
+        "ip2location/ip2location-php": ">=9.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
