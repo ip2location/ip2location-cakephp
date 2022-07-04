@@ -12,10 +12,10 @@ For CakePHP 4.x
 2. Download latest IP2Location BIN database
     - IP2Location free LITE database at https://lite.ip2location.com
     - IP2Location commercial database at https://www.ip2location.com
-3. Unzip and copy the BIN file into */vendor/ip2location/ip2location-cakephp/src/Data* folder. 
+3. Unzip and copy the BIN file into */vendor/ip2location/ip2location-cakephp/src/Data* folder.
 4. Rename the BIN file to IP2LOCATION.BIN.
 
-**Note:** The plugin has included an old BIN database for your testing and development purpose. 
+**Note:** The plugin has included an old BIN database for your testing and development purpose.
 You may want to download a latest copy of BIN database as the URL stated above.
 The BIN database refers to the binary file ended with .BIN extension, but not the CSV format.
 Please select the right package for download.
@@ -103,6 +103,19 @@ class TestsController extends AppController
         echo '<pre>';
         print_r ($record);
         echo '</pre>';
+
+        var_dump($IP2Location->isIpv4('8.8.8.8'));echo '<br>';
+        var_dump($IP2Location->isIpv6('2001:4860:4860::8888'));echo '<br>';
+        print_r($IP2Location->ipv4ToDecimal('8.8.8.8'));echo '<br>';
+        print_r($IP2Location->decimalToIpv4(134744072));echo '<br>';
+        print_r($IP2Location->ipv6ToDecimal('2001:4860:4860::8888'));echo '<br>';
+        print_r($IP2Location->decimalToIpv6('42541956123769884636017138956568135816'));echo '<br>';
+        print_r($IP2Location->ipv4ToCidr('8.0.0.0', '8.255.255.255'));echo '<br>';
+        print_r($IP2Location->cidrToIpv4('8.0.0.0/8'));echo '<br>';
+        print_r($IP2Location->ipv6ToCidr('2002:0000:0000:1234:abcd:ffff:c0a8:0000', '2002:0000:0000:1234:ffff:ffff:ffff:ffff'));echo '<br>';
+        print_r($IP2Location->cidrToIpv6('2002::1234:abcd:ffff:c0a8:101/64'));echo '<br>';
+        print_r($IP2Location->compressIpv6('2002:0000:0000:1234:FFFF:FFFF:FFFF:FFFF'));echo '<br>';
+        print_r($IP2Location->expandIpv6('2002::1234:FFFF:FFFF:FFFF:FFFF'));echo '<br>';
     }
 
 }
