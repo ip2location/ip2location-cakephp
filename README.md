@@ -41,20 +41,11 @@ namespace App\Controller;
 use App\Controller\AppController;
 use IP2LocationCakePHP\Controller\IP2LocationCoresController;
 
-// (required) Define IP2Location API key.
-define('IP2LOCATION_API_KEY', 'your_api_key');
+// (required) Define IP2Location.io API key.
+define('IP2LOCATION_IO_API_KEY', 'your_api_key');
 
-// (required) Define IP2Location Web service package of different granularity of return information.
-define('IP2LOCATION_PACKAGE', 'WS1');
-
-// (optional) Define to use https or http.
-define('IP2LOCATION_USESSL', false);
-
-// (optional) Define extra information in addition to the above-selected package. Refer to https://www.ip2location.com/web-service/ip2location for the list of available addons.
-define('IP2LOCATION_ADDONS', []);
-
-// (optional) Define Translation information. Refer to https://www.ip2location.com/web-service/ip2location for available languages.
-define('IP2LOCATION_LANGUAGE', 'en');
+// (optional) Define Translation information. Refer to https://www.ip2location.io/ip2location-documentation for available languages.
+define('IP2LOCATION_IO_LANGUAGE', 'en');
 
 /**
  * Tests Controller
@@ -128,7 +119,7 @@ This library requires IP2Location BIN data file or IP2Location API key to functi
 * IP2Location LITE BIN Data (Free): https://lite.ip2location.com
 * IP2Location Commercial BIN Data (Comprehensive): https://www.ip2location.com
 
-You can also sign up for [IP2Location Web Service](https://www.ip2location.com/web-service/ip2location) to get one free API key.
+You can also sign up for [IP2Location.io IP Geolocation API](https://www.ip2location.io/sign-up) to get one free API key.
 
 
 ## IPv4 BIN vs IPv6 BIN
