@@ -2,13 +2,13 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/ip2location/ip2location-cakephp.svg)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 [![Total Downloads](https://img.shields.io/packagist/dt/ip2location/ip2location-cakephp.svg?style=flat-square)](https://packagist.org/packages/ip2location/ip2location-cakephp)
 
-IP2Location CakePHP plugin enables the user to find the country, region, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage typ, IP address type and IAB advertising category from IP address using IP2Location database. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases or web service for applications written using CakePHP.
+IP2Location CakePHP plugin enables the user to find the country, region, district, city, coordinates, zip code, time zone, ISP, domain name, connection type, area code, weather, MCC, MNC, mobile brand name, elevation and usage type, IP address type, IAB advertising category and ASN from IP address using IP2Location database. It has been optimized for speed and memory utilization. Developers can use the API to query all IP2Location BIN databases or web service for applications written using CakePHP.
+
+Note: This plugin works in CakePHP 4 and CakePHP 5.
 
 
 ## INSTALLATION
-For CakePHP 4.x
-
-1. Run the command: `composer require ip2location/ip2location-cakephp` to download the plugin into the CakePHP 4 platform.
+1. Run the command: `composer require ip2location/ip2location-cakephp` to download the plugin into the CakePHP platform.
 2. Download latest IP2Location BIN database
     - IP2Location free LITE database at https://lite.ip2location.com
     - IP2Location commercial database at https://www.ip2location.com
@@ -24,7 +24,7 @@ Please select the right package for download.
 ## USAGE
 In this tutorial, we will show you on how to create a **TestsController** to display the IP information.
 
-1. Create a **TestsController** in CakePHP 4 using the below command line
+1. Create a **TestsController** in CakePHP using the below command line
 ```
 php bin/cake bake controller Tests
 ```
@@ -88,6 +88,9 @@ class TestsController extends AppController
         echo 'Usage Type: ' . $record['usageType'] . '<br>';
         echo 'Address Type: ' . $record['addressType'] . '<br>';
         echo 'Category: ' . $record['category'] . '<br>';
+        echo 'District: ' . $record['district'] . '<br>';
+        echo 'ASN: ' . $record['asn'] . '<br>';
+        echo 'AS: ' . $record['as'] . '<br>';
 
         $record = $IP2Location->getWebService('8.8.8.8');
         echo 'Result from Web service:<br>';
