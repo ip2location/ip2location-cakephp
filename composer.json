@@ -16,7 +16,7 @@
         "ip2location/ip2location-php": ">=9.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": ">=12.5.22"
     },
     "autoload": {
         "psr-4": {
